@@ -1,6 +1,6 @@
 import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {Course} from "../model/course";
-import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
+import { DialogPosition, MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import {CourseDialogComponent} from "../course-dialog/course-dialog.component";
 
 @Component({
@@ -21,16 +21,13 @@ export class CoursesCardListComponent implements OnInit {
     }
 
     editCourse(course:Course) {
-
         const dialogConfig = new MatDialogConfig();
 
         dialogConfig.disableClose = true;
         dialogConfig.autoFocus = true;
-
         dialogConfig.data = course;
 
         const dialogRef = this.dialog.open(CourseDialogComponent, dialogConfig);
-
 
     }
 

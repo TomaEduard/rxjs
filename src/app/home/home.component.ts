@@ -12,13 +12,10 @@ import { createHttpObservable } from '../common/util';
 })
 export class HomeComponent implements OnInit {
 
-
     beginnersCourses$: Observable<Course[]>;
     advancedCourses$: Observable<Course[]>;
 
-
     constructor() {
-
     }
 
     ngOnInit() {
@@ -39,6 +36,7 @@ export class HomeComponent implements OnInit {
                 map((courses: Course[]) => courses
                     .filter((course : Course) => course.category === "ADVANCED"))
         )
+
     }
 
 }
