@@ -22,7 +22,9 @@ export class HomeComponent implements OnInit {
         const http$ = createHttpObservable('/api/courses');
         const courses$: Observable<Course[]> = http$
             .pipe(
+                tap(() => console.log('HTTP request executed')), // allow to produce side effect
                 map(res => Object.values(res['payload'])), // transform into an object every res
+                shareReplay()
             );
 
         this.beginnersCourses$ = courses$
@@ -36,7 +38,6 @@ export class HomeComponent implements OnInit {
                 map((courses: Course[]) => courses
                     .filter((course : Course) => course.category === "ADVANCED"))
         )
-
     }
 
 }
